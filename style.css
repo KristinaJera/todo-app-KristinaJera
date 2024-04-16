@@ -1,0 +1,225 @@
+
+ :root{
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+ }  
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(49, 54, 93, 0.662);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column; 
+}
+
+.body {
+    background-color: rgba(57, 88, 133, 0.361);
+    display: flex;
+    flex-direction: column;
+   text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 60%; 
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5); 
+  margin: 70px 0 50px 0;
+}
+.body-add{
+    background-color: rgba(57, 88, 133, 0.361);
+    display: flex;
+    flex-direction: column;
+   text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 60%; 
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5); 
+margin-top: 100px;
+}
+.header-add{
+    padding-top: 0;
+    text-align: center;
+    color: antiquewhite;
+    margin: 30px 0 15px 0px;
+}
+.header{
+    margin-top: 15px;
+    padding-top: 0;
+    text-align: center;
+    color: rgb(250, 235, 215);
+    margin-bottom: 5px;
+   }
+   .logout{
+    display: flex;
+    flex-direction: row;
+   }
+   .logout h1{
+    margin-right: 40px;
+   }
+   .btn-1{
+    padding: 5px 10px;
+    margin: 26px 0px 40px 35px;
+    color: antiquewhite;
+    text-decoration: none;
+    box-shadow: 0 0 2px 2px rgb(250, 235, 215) ;
+    font-weight: 600;
+    border-radius: 10px;
+   }
+   .btn-1:hover{
+    background-color: darkgrey;
+   }
+table{
+    padding-bottom: 15px;
+}
+.menu {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+}
+.menu a{
+    color: rgba(45, 42, 107, 0.767);
+    margin: 0 20px;
+  text-decoration: none;
+
+}
+.menu a:hover{
+    color:rgb(14, 16, 84);
+    text-decoration: none;
+}
+.session-msg-n{
+    color: rgb(182, 42, 42) ;
+    font-size: large;
+    font-weight: 900;
+    font-family: "Indie Flower", cursive;
+}
+.session-msg-p{
+    color: rgb(24, 99, 90) ;
+    font-size: large;
+    font-weight: 900;
+    font-family: "Indie Flower", cursive;
+}
+.tasks{
+    margin-top: 0;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+ .h3{
+    margin-top: 0;
+    color:rgb(51, 68, 155);
+    font-size: 18px;
+}
+th{
+    padding: 20px;
+}
+.task{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+} 
+
+
+.input{
+    font-family: "Indie Flower", cursive;
+    padding: 4.5px;
+    width: 122px;
+     border-radius: 10px;
+     border-style: none;
+     font-weight: 600;
+     height: 22px;
+     font-size: 14px;
+}
+.input-date{
+    font-family: "Indie Flower", cursive;
+    border-radius: 10px;
+    padding: 3.5px;
+    width: 122px;
+    border-style: none;
+    font-weight: 600;
+    height: 22px;
+    font-size: 14px;
+}
+
+.input-select{
+    font-family: "Indie Flower", cursive;
+    border-radius: 10px;
+    padding: 5.5px;
+    width: 122px;
+    height:32px; 
+    border-style: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+.submit{
+    font-family: "Indie Flower", cursive;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #1c284c;
+    color:antiquewhite;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.update, .delete{
+    text-decoration: none;
+    padding: 5px;
+    color: azure;
+    font-size: 18px;
+}
+.delete:hover{
+    color: rgb(172, 172, 172);
+    text-decoration:underline;
+}
+.update:hover{
+    color: rgb(172, 172, 172);
+    text-decoration:underline;
+}
+.form-group{
+    margin: 15px 0 ;
+}
+.form-control{
+    padding: 5px 13px;
+ background-color: transparent ;
+ text-decoration: none;
+ box-shadow: 0 0 4px 3px rgb(250, 235, 215, 0.5) ;
+ border:none;
+ border-radius: 10px;
+}
+.form-control::placeholder {
+    font-family: "Indie Flower", cursive;
+    color: antiquewhite;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+
+  }
+  .btn-2{
+    font-family: "Indie Flower", cursive;
+    padding: 5px 15px;
+    background-color: transparent ;
+    color: antiquewhite;
+    text-decoration: none;
+    box-shadow: 0 0 4px 4px rgb(250, 235, 215, 0.9) ;
+    font-weight: 600;
+    border-radius: 10px;
+    border:none;
+    font-size: 17px;
+  }
+  .login-register{
+    
+    text-decoration: none;
+    padding: 5px;
+    color: azure;
+    font-size: 18px;
+
+  }
+  .login-register:hover{
+    color: rgb(172, 172, 172);
+    text-decoration:underline;
+}
