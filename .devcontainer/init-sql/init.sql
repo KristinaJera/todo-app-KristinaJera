@@ -23,7 +23,7 @@ CREATE TABLE `table_task` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `full_name` varchar(255) DEFAULT NOT NULL,
   PRIMARY KEY (`user_id`)
