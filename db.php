@@ -14,56 +14,48 @@ try {
   exit;
 }
 
-// Check if form is submitted
+// Check whether the form is submitted for adding a task
 if (isset($_POST['submit'])) {
-
-  // Using the ternary operator to set $task_id or null
-  $task_id = isset($_POST['task_id']) ? $_POST['task_id'] : null; 
-  // countinue get form data 
+  // Retrieve task details from the form
   $task_name = $_POST['task_name'];
   $task_status = $_POST['task_status'];
   $task_priority = $_POST['task_priority'];
   $task_duedate = $_POST['task_duedate'];
-  $taskuser_id = $_SESSION['user_id'];
 
- 
- // SQL Query to insert data into the database
- $sql = "INSERT INTO table_task (task_name, task_status, task_priority, task_duedate, user_id) 
-         VALUES (:task_name, :task_status, :task_priority, :task_duedate, :user_id)";
+  // Retrieve user_id from the session
+  if (isset($_SESSION['user_id'])) {
+      $user_id = $_SESSION['user_id'];
 
+      // SQL query to insert the task into the table_task table
+      $sql = "INSERT INTO table_task (task_name, task_status, task_priority, task_duedate, user_id) 
+              VALUES (:task_name, :task_status, :task_priority, :task_duedate, :user_id)";
 
-  // Prepare the statement
-  $stmt = $conn->prepare($sql);
+      // Prepare the statement
+      $stmt = $conn->prepare($sql);
 
-  // Bind parameters
+      // Bind parameters
+      $stmt->bindParam(':task_name', $task_name, PDO::PARAM_STR);
+      $stmt->bindParam(':task_status', $task_status, PDO::PARAM_STR);
+      $stmt->bindParam(':task_priority', $task_priority, PDO::PARAM_STR);
+      $stmt->bindParam(':task_duedate', $task_duedate, PDO::PARAM_STR);
+      $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
-  $stmt->bindParam(':task_name', $task_name, PDO::PARAM_STR);
-  $stmt->bindParam(':task_status', $task_status, PDO::PARAM_STR);
-  $stmt->bindParam(':task_priority', $task_priority, PDO::PARAM_STR);
-  $stmt->bindParam(':task_duedate', $task_duedate, PDO::PARAM_STR);
-  $stmt->bindParam(':user_id', $taskuser_id, PDO::PARAM_INT);
-
-  // Execute the query and insert into the database
-  $stmt->execute();
-  
-  if ($stmt->rowCount() > 0) {
-      //    Create a SESSION Variable to Display message
-      $_SESSION['add'] = "List Added Successfully";
-      //     // Redirect to Update Page  
-       header('location: ' . SITEURL . 'manage.php');
-        exit; // Make sure to exit after a header redirect
-  
+      // Execute the query
+      if ($stmt->execute()) {
+          // Task added successfully
+          $_SESSION['add'] = "List Added Successfully";
+          header('location: ' . SITEURL . 'manage.php');
+          exit;
+      } else {
+          // Failed to add task
+          $_SESSION['add_fail'] = "Failed to Add List";
+          header('location: ' . SITEURL . 'add.php');
+          exit;
+      }
   } else {
-      //    Create a SESSION Variable to Display message
-      $_SESSION['add_fail'] = "Failed to Add List";
-      //  // Redirect to Update Page
-      header('location: ' . SITEURL . 'add.php');
-     exit; // Make sure to exit after a header redirect
+      // User is not logged in
+      // Handle this case as needed, maybe redirect to login page
   }
-}
-else {
-// Handle the case where task_name is NULL
-// echo "Task name cannot be NULL";
 }
 
 // Check whether the Update is Clickes or not
@@ -133,7 +125,9 @@ if (isset($_POST["login"])) {
       if ($stmt->rowCount() > 0) {
           if (password_verify($password, $user["pass"])) {
               $_SESSION["user"] = "yes";
+              if (isset($user['user_id'])) {     
               $_SESSION['user_id'] = $user['user_id'];
+              }
               header('location: ' . SITEURL . 'home.php');
               exit;
           } else {
